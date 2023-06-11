@@ -1,0 +1,197 @@
+/* variables css */
+:root {
+  --primary: #795548;
+  --dark-primary: #4b2c20;
+  --light-primary: #a98274;
+  --secondary: #ff9800;
+  --dark-secondary: #c66900;
+  --light-secondary: #ffc947;
+  --gray: #757575;
+  --error: #ca3a41;
+  --success: #00600f;
+  --white: #FFF;
+  --black: #000;
+  --height: calc(100vh - 56px);
+  --width: 100%;
+  --fontFamily: "Roboto";
+}
+
+.floating-button {
+  z-index: 1000;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding: 30px;
+}
+
+#main .card-wide {
+  width: var(--width);
+}
+
+#modal-post-section {
+  display: none;
+  z-index: 1001;
+  position: fixed;
+  width: 100%;
+  min-height: 100vh;
+  overflow-y: auto;
+  bottom: 0;
+  top: 56px;
+  background: white;
+  text-align: center;
+  transform: translateY(100vh);
+  transition: transform .5s;
+}
+
+.svg--container {
+  position: relative;
+}
+
+.svg--container div {
+  height: 210px;
+  background: var(--dark-primary) url('../images/computer.jpg');
+  background-position: bottom;
+  background-size: cover;
+  object-fit: cover;
+  color: var(--white);
+}
+
+.svg--container svg {
+  position: absolute;
+  bottom: 0;
+  background: transparent;
+}
+
+#main .page-index {
+  background: var(--dark-primary);
+  height: var(--height);
+}
+
+.page--initial {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  user-select: none;
+  opacity: .87;
+  color: var(--gray);
+  font-size: 1rem;
+  line-height: 18px;
+  font-weight: 400;
+}
+.page--initial i{
+  font-size: 4rem;
+  color: var(--white);
+  min-width: 70px;
+  padding: 10px;
+  text-align: center;
+}
+.page--initial .description {
+  color: var(--white);
+  border-radius: 7px;
+  border: 1px solid rgba(255, 201, 71, .5);
+  margin: 10px 10px;
+  padding: 10px;
+  width: calc(var(--width) - 20px);
+}
+
+.app--install {
+  background: var(--primary);
+  color: var(--white) !important;
+  display: flex;
+  flex-direction: row;
+}
+.app--install:hover {
+  background: var(--primary) !important;
+}
+.app--install div:first-child {
+  text-align: left;
+  font-size: 12px;
+  padding: 5px 0 8px 5px;
+}
+.app--install div:last-child {
+  border: 1px solid rgba(255, 255, 255, .5); 
+  border-radius: 4px;
+  float: right;
+  padding: 5px 8px;
+}
+
+.select-none {
+  user-select: none;
+}
+
+#toast-container {
+  z-index: 99999 !important;
+}
+
+.pa-0 {
+  padding: 0px;
+}
+.ma-0 {
+  margin: 0px;
+}
+.fs8 {
+  font-size: 18px !important;
+}
+
+.error {
+  background: var(--error);
+}
+.success {
+  background: var(--success);
+}
+
+#loading {
+  display: none;
+}
+.loading {
+  position: fixed;
+  z-index: 1010;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: rgba(255, 255, 255, .8);
+}
+
+/* Para los posts */
+.card-posts {
+  width: var(--width) !important;
+}
+.card-posts .mdl-card {
+  width: var(--width) !important;
+}
+.card-posts > .mdl-card__title {
+  color: var(--white);
+  height: 176px;
+  background: url('../images/computer.jpg') center / cover;
+}
+.card-posts > .mdl-card__menu {
+  color: var(--white);
+}
+
+/* Notificaciones */
+.notifications--install {
+  background: var(--secondary);
+  color: var(--white) !important;
+  display: flex;
+  flex-direction: row;
+}
+.notifications--install:hover {
+  background: var(--secondary) !important;
+}
+.notifications--install div:first-child {
+  text-align: left;
+  font-size: 12px;
+  padding: 5px 0 8px 5px;
+}
+.notifications--install div:last-child {
+  border: 1px solid rgba(255, 255, 255, .5); 
+  border-radius: 4px;
+  float: right;
+  padding: 5px 8px;
+}
