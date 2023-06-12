@@ -63,6 +63,7 @@ const createPosts = ({ description, title, image, timestamp }) => {
 };
 
 if (window.location.href.includes('post.html')) {
+  // db.on('postme-app')
   db.collection('posts').onSnapshot((snapshot) => {
     snapshot.docChanges().forEach(change => {
       if (change.type === 'added') {
