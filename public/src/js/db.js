@@ -9,6 +9,8 @@
 //     }
 //   });
 
+const { response } = require("express");
+
 const createPosts = ({ description, title, image, timestamp }) => {
   let UNIX;
   if (timestamp) {
@@ -63,20 +65,9 @@ const createPosts = ({ description, title, image, timestamp }) => {
 };
 
 if (window.location.href.includes('post.html')) {
-  // db.on('postme-app')
   const urlRD = 'https://postme-5ceb1-default-rtdb.firebaseio.com/postme-app.json';
-  fetch(urlRD, {
-    method: 'GET',
-    cors: 'no-cors',
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json'
-    },
-  })
-    .then(response => {
-      console.info('data real time', response);
-    })
-    .catch(err => console.error(err.message));
+  logJSONData(urlRD);
+  // db.on('postme-app')
   /*db.collection('posts').onSnapshot((snapshot) => {
     snapshot.docChanges().forEach(change => {
       if (change.type === 'added') {
@@ -94,4 +85,11 @@ if (window.location.href.includes('post.html')) {
       }
     });
   })*/
+}
+
+async function logJSONData(url) {
+  const response = await fetch(url);
+  const jsonData = await response.json();
+  console.log(jsonData);
+  console.log(Object.values(jsonData), 'values');
 }
