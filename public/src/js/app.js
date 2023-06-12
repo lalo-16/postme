@@ -27,7 +27,7 @@ const sendData = async (e) => {
     TITLE = document.querySelector('#title').value;
     DESCRIPTION = document.querySelector('#description').value;
     if (TITLE && DESCRIPTION) {
-      let post = {
+      const post = {
         title: TITLE,
         description: DESCRIPTION,
       }
@@ -44,13 +44,13 @@ const sendData = async (e) => {
         await db.collection('posts').add(post);
       }
 
-      post = {};
+      // post = {};
       const data = {
         message: 'Registro exitosamente almacenado',
         timeout: 5000
       };
       Message().MaterialSnackbar.showSnackbar(data);
-      setTimeout(() => closePostModal, 1000)
+      // setTimeout(() => closePostModal, 1000)
     } else {
       const data = {
         message: 'Faltan campos por llenar',
@@ -179,7 +179,7 @@ window.addEventListener('load', async () => {
     btnUpdatePosts.addEventListener('click', (e) => {
       console.log('Subir info');
     });
-    
+
     if ('serviceWorker' in navigator) {
       await navigator.serviceWorker.register('sw.js');
     }
