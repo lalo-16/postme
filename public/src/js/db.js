@@ -92,5 +92,10 @@ async function logJSONData(url) {
   });
   const jsonData = await response.json();
   console.log(jsonData);
-  console.log(Object.values(jsonData), 'values');
+  const transformData = Object.values(jsonData);
+  console.log(transformData, 'values');
+  transformData?.map((item) => createPosts(item))
+  // createPosts(data);
+  closePostModal();
+  document.forms[0].reset();
 }
