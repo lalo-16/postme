@@ -9,8 +9,6 @@
 //     }
 //   });
 
-const { response } = require("express");
-
 const createPosts = ({ description, title, image, timestamp }) => {
   let UNIX;
   if (timestamp) {
