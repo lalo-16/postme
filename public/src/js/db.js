@@ -64,7 +64,20 @@ const createPosts = ({ description, title, image, timestamp }) => {
 
 if (window.location.href.includes('post.html')) {
   // db.on('postme-app')
-  db.collection('posts').onSnapshot((snapshot) => {
+  const urlRD = 'https://postme-5ceb1-default-rtdb.firebaseio.com/postme-app.json';
+  fetch(urlRD, {
+    method: 'GET',
+    cors: 'no-cors',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+  })
+    .then(response => {
+      console.info('data real time', response);
+    })
+    .catch(err => console.error(err.message));
+  /*db.collection('posts').onSnapshot((snapshot) => {
     snapshot.docChanges().forEach(change => {
       if (change.type === 'added') {
         const data = change.doc.data();
@@ -80,5 +93,5 @@ if (window.location.href.includes('post.html')) {
         document.forms[0].reset();
       }
     });
-  })
+  })*/
 }

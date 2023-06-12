@@ -121,11 +121,7 @@ self.addEventListener('sync', (event) => {
       .then((docs) => {
         docs.rows.forEach(registro => {
           const doc = registro.doc;
-           db.collection('posts').add(post).then(() => {
-            console.info('La transaccion o registro salio exitosamente db postsss');
-            dbPost.remove(doc);
-           });
-          /*fetch(urlRD, {
+          fetch(urlRD, {
             method: 'POST',
             cors: 'no-cors',
             headers: {
@@ -138,7 +134,7 @@ self.addEventListener('sync', (event) => {
               console.info('La transaccion o registro salio exitosamente');
               dbPost.remove(doc);
             })
-            .catch(err => console.error(err.message));*/
+            .catch(err => console.error(err.message));
         })
       })
   }
