@@ -66,6 +66,7 @@ const createPosts = ({ description, title, image, timestamp }) => {
 
 if (window.location.href.includes('post.html')) {
   const urlRD = 'https://postme-5ceb1-default-rtdb.firebaseio.com/postme-app.json';
+  console.log(urlRD, 'url');
   logJSONData(urlRD);
   // db.on('postme-app')
   /*db.collection('posts').onSnapshot((snapshot) => {
@@ -88,7 +89,9 @@ if (window.location.href.includes('post.html')) {
 }
 
 async function logJSONData(url) {
-  const response = await fetch(url);
+  const response = await fetch(url, {
+    method: 'GET'
+  });
   const jsonData = await response.json();
   console.log(jsonData);
   console.log(Object.values(jsonData), 'values');
