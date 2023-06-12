@@ -27,7 +27,7 @@ const sendData = async (e) => {
     TITLE = document.querySelector('#title').value;
     DESCRIPTION = document.querySelector('#description').value;
     if (TITLE && DESCRIPTION) {
-      const post = {
+      let post = {
         title: TITLE,
         description: DESCRIPTION,
       }
@@ -43,11 +43,14 @@ const sendData = async (e) => {
         post.timestamp = firebase.firestore.FieldValue.serverTimestamp();
         await db.collection('posts').add(post);
       }
+
+      post = {};
       const data = {
         message: 'Registro exitosamente almacenado',
         timeout: 5000
       };
       Message().MaterialSnackbar.showSnackbar(data);
+      setTimeout(() => closePostModal, 1000)
     } else {
       const data = {
         message: 'Faltan campos por llenar',
@@ -159,6 +162,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
 
 // Cuando se cargue todo nuestro DOM
 window.addEventListener('load', async () => {
+  console.log('event load');
   try {
     // Declarando mi instancia de base de datos creada por PouchDB
     DB_POUCH = new PouchDB('posts');
@@ -169,7 +173,13 @@ window.addEventListener('load', async () => {
     BTN_SHOW_POST.addEventListener('click', showPostModal);
     BTN_CANCEL_POST = document.querySelector('#btn-post-cancel');
     BTN_CANCEL_POST.addEventListener('click', closePostModal);
-  
+    
+    const btnUpdatePosts = document.querySelector('#btn-update-all-posts');
+    btnUpdatePosts.classList.add('hide');
+    btnUpdatePosts.addEventListener('click', (e) => {
+      console.log('Subir info');
+    });
+    
     if ('serviceWorker' in navigator) {
       await navigator.serviceWorker.register('sw.js');
     }
@@ -191,6 +201,8 @@ window.addEventListener('load', async () => {
     // Agarrando el boton enviar post
     const btnPostSubmit = document.querySelector('#btn-post-submit');
     btnPostSubmit.addEventListener('click', (e) => sendData(e));
+
+    
   
     const bannerInstall = document.querySelector('#banner-install');
     bannerInstall.addEventListener('click', async () => {
@@ -207,6 +219,6 @@ window.addEventListener('load', async () => {
       message: error.message,
       timeout: 5000
     };
-    Message('error').MaterialSnackbar.showSnackbar(data);
+    // Message('error').MaterialSnackbar.showSnackbar(data);
   }
 });

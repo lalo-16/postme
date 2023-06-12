@@ -62,10 +62,53 @@ const createPosts = ({ description, title, image, timestamp }) => {
   MAIN.appendChild(cardText);
 };
 
+const getOfflineData = () => {
+  console.log('offline');
+  const dbPost = new PouchDB('posts');
+  dbPost.allDocs(({ include_docs: true }))
+    .then((docs) => {
+      docs.rows.forEach(registro => {
+        const doc = registro.doc;
+        createPosts(doc);
+      })
+    })
+}
+
 if (window.location.href.includes('post.html')) {
   const urlRD = 'https://postme-5ceb1-default-rtdb.firebaseio.com/postme-app.json';
   console.log(urlRD, 'url');
   logJSONData(urlRD);
+  // db.on('postme-app')
+  /*db.collection('posts').onSnapshot((snapshot) => {
+    snapshot.docChanges().forEach(change => {
+      if (change.type === 'added') {
+        const data = change.doc.data();
+        createPosts(data);
+        closePostModal();
+        document.forms[0].reset();
+
+      }
+      if (change.type === 'removed') {
+        const data = change.doc.data(); 
+        createPosts(data);
+        closePostModal();
+        document.forms[0].reset();
+      }
+    });
+  })*/
+}
+if (window.location.href.includes('pending.html')) {
+  //const urlRD = 'https://postme-5ceb1-default-rtdb.firebaseio.com/postme-app.json';
+
+  const dbPost = new PouchDB('posts');
+  dbPost.changes({
+  since: 'now',
+ live: true
+ }).on('change',getOfflineData);
+
+ getOfflineData(dbPost);
+  
+  // logJSONData(urlRD);
   // db.on('postme-app')
   /*db.collection('posts').onSnapshot((snapshot) => {
     snapshot.docChanges().forEach(change => {

@@ -11,7 +11,6 @@
   <script src="https://unpkg.com/dayjs@1.8.35/plugin/relativeTime.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-firestore.js"></script>
-  <script src="src/js/firebase.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/pouchdb@7.2.1/dist/pouchdb.min.js"></script>
   <link rel="icon" type="image/png" href="src/images/icons/icon-144x144.png" sizes="144x144" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -20,8 +19,6 @@
   <link rel="manifest" href="manifest.webmanifest"/>
   <script async src="https://unpkg.com/pwacompat" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="src/css/app.css">
-  <script src="src/js/app.js"></script>
-  <script src="src/js/db.js"></script>
 </head>
 <body>
    <!-- Mensajes emergentes -->
@@ -42,10 +39,11 @@
         <span class="mdl-layout-title">Postme</span>
         <div class="mdl-layout-spacer"></div>
         <nav class="mdl-navigation mdl-layout--large-screen-only">
-          <a class="mdl-navigation__link" href="">Ver publicaciones</a>
-          <a class="mdl-navigation__link" href="">Imagenes</a>
+          <a class="mdl-navigation__link" href="post.html">Ver publicaciones</a>
+          <a class="mdl-navigation__link" href="pending.html">Ver elementos sin registrar</a>
+          <!-- <a class="mdl-navigation__link" href="">Imagenes</a>
           <a class="mdl-navigation__link" href="">Videos</a>
-          <a class="mdl-navigation__link" href="">Audios</a>
+          <a class="mdl-navigation__link" href="">Audios</a> -->
         </nav>
       </div>
     </header>
@@ -58,16 +56,16 @@
         <a class="mdl-navigation__link" href="post.html">
           <i class="material-icons mdl-color-text--primary">post_add</i>
           Ver publicaciones</a>
-        <a class="mdl-navigation__link" href="post.html">
+        <a class="mdl-navigation__link" href="pending.html">
           <i class="material-icons mdl-color-text--primary">camera_alt</i>
-          Imagenes</a>
-        <a class="mdl-navigation__link" href="post.html">
+          Ver elementos sin registrar</a>
+        <!--<a class="mdl-navigation__link" href="post.html">
           <i class="material-icons mdl-color-text--primary">ondemand_video</i>
           Videos</a>
         <a class="mdl-navigation__link" href="post.html">
           <i class="material-icons mdl-color-text--primary">music_video</i>
           Audios
-        </a>
+        </a> -->
         <div class="mdl-navigation__link app--install" id="banner-install">
           <div>
             Si te gusto la app puedes instalarla en dispositivo haciendo click en el boton instalar
@@ -131,5 +129,8 @@
       </div>
     </main>
   </div>
+  <script src="src/js/firebase.js"></script>
+  <script src="src/js/app.js"></script>
+  <script src="src/js/db.js"></script>
 </body>
 </html>

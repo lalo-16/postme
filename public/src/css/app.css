@@ -195,3 +195,7 @@
   float: right;
   padding: 5px 8px;
 }
+
+.hide {
+  display: none;
+}
