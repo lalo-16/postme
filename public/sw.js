@@ -115,7 +115,7 @@ self.addEventListener('fetch', (event)=> {
 
 self.addEventListener('sync', (event) => {
   if (event.tag === 'new-post') {
-    const urlRD = 'https://postme-app.firebaseio.com/postme-app.json';
+    const urlRD = 'https://postme-5ceb1-default-rtdb.firebaseio.com/postme-app.json';
     const dbPost = new PouchDB('posts');
     dbPost.allDocs(({ include_docs: true }))
       .then((docs) => {

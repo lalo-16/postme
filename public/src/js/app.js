@@ -38,6 +38,7 @@ const sendData = async (e) => {
         await readySW.sync.register('new-post');
         post._id = new Date().toISOString();
         await DB_POUCH.put(post);
+        console.log('sync manager');
       } else {
         post.timestamp = firebase.firestore.FieldValue.serverTimestamp();
         await db.collection('posts').add(post);
